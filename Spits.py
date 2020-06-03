@@ -33,14 +33,16 @@ print (inputboard)
 def populateboard(inputboard):																		#Functie om het dummy bord op basis van de input van auto's te voorzien
 	boardfilled=boarddummy
 	for row in inputboard.itertuples():																#loop door input dataframe
-		boardfilled[row.row][row.col]=boardfilled[row.row][row.col].replace('0',row.car)			#Vervang 0 met de relevante auto letter
+		posx= 7-row.col
+		posy= row.row
+		boardfilled[posx][posy]=boardfilled[posx][posy].replace('0',row.car)			#Vervang 0 met de relevante auto letter
 		if row.orientation=='H':																	#check of de auto horizontaal of verticaal is georienteerd om te bepalen waar de volgende letter moet komen
-			boardfilled[row.row][row.col-1]=boardfilled[row.row][row.col-1].replace('0',row.car)
+			boardfilled[posx][posy+1]=boardfilled[posx][posy+1].replace('0',row.car)
 			if row.length==3:																		#check hoe groot de auto is om te bepalen of er nog een derde letter bij moet komen
-				boardfilled[row.row][row.col-2]=boardfilled[row.row][row.col-2].replace('0',row.car)
+				boardfilled[posx][posy+2]=boardfilled[posx][posy+2].replace('0',row.car)
 		if row.orientation=='V':
-			boardfilled[row.row-1][row.col]=boardfilled[row.row-1][row.col].replace('0',row.car)
+			boardfilled[posx-1][posy]=boardfilled[posx-1][posy].replace('0',row.car)
 			if row.length==3:
-				boardfilled[row.row-2][row.col]=boardfilled[row.row-2][row.col].replace('0',row.car)
+				boardfilled[posx-2][posy]=boardfilled[posx-2][posy].replace('0',row.car)
 	return boardfilled
 print(populateboard(inputboard))
