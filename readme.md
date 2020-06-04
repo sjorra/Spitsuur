@@ -1,0 +1,8 @@
+- Bord heeft 2 dimensies met unieke identificatie per auto
+ - Unieke identificatie voor doelstelling (poortje)
+ - Unieke identificatie voor de rode auto
+ - Verticale orientatie van auto's
+ - Horizontale orientatie van auto's 
+ - Een blok kan niet door een ander blok
+ - Alleen de rode auto kan door de poort
+ - Het spel is over al de rode auto door de poort is
