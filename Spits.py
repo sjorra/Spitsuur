@@ -2,7 +2,7 @@
 
 import pandas as pd
 import numpy  as np
-import os
+
 print(''' - Bord heeft 2 dimensies met unieke identificatie per auto
  - Unieke identificatie voor doelstelling (poortje)
  - Unieke identificatie voor de rode auto
@@ -11,8 +11,8 @@ print(''' - Bord heeft 2 dimensies met unieke identificatie per auto
  - Een blok kan niet door een ander blok
  - Alleen de rode auto kan door de poort
  - Het spel is over al de rode auto door de poort is''')
-file_path='Borden/Rushhour6x6_3.csv'
-inputboard=pd.read_csv(file_path) 																	#inlezen indeling bord
+file_path="Borden/Rushhour6x6_3.csv"
+inputboard=pd.read_csv("./Borden/Rushhour6x6_3.csv") 																	#inlezen indeling bord
 
 finished=False 																						#constraint voor beeindigen simulatie
 
@@ -35,7 +35,7 @@ def populateboard(inputboard):																		#Functie om het dummy bord op ba
 	for row in inputboard.itertuples():																#loop door input dataframe
 		posx= 7-row.col
 		posy= row.row
-		boardfilled[posx][posy]=boardfilled[posx][posy].replace('0',row.car)			#Vervang 0 met de relevante auto letter
+		boardfilled[posx][posy]=boardfilled[posx][posy].replace('0',row.car)						#Vervang 0 met de relevante auto letter
 		if row.orientation=='H':																	#check of de auto horizontaal of verticaal is georienteerd om te bepalen waar de volgende letter moet komen
 			boardfilled[posx][posy+1]=boardfilled[posx][posy+1].replace('0',row.car)
 			if row.length==3:																		#check hoe groot de auto is om te bepalen of er nog een derde letter bij moet komen
